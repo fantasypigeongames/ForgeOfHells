@@ -7,7 +7,7 @@ func init() -> void:
 	
 func enter() -> void:
 	print("enter: ", name)
-	player.velocity = Vector2.ZERO
+	#player.velocity = Vector2.ZERO
 	pass
 	
 func exit() -> void:
