@@ -13,7 +13,6 @@ func enter() -> void:
 func exit() -> void:
 	print("exit: ", name)
 	player.add_debug_indicator( Color.RED )
-
 	pass
 	
 #what happens when input is pressed/released
