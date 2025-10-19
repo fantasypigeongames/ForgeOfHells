@@ -12,6 +12,8 @@ func enter() -> void:
 	
 func exit() -> void:
 	print("exit: ", name)
+	player.add_debug_indicator( Color.RED )
+
 	pass
 	
 #what happens when input is pressed/released
@@ -20,14 +22,13 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 	
 #override built in process and physics fucntions for each player state
 func process ( _delta: float ) -> PlayerState:
-	if player.is_on_floor():
-		player.change_state( idle )
-		
-	var x_axis = Input.get_axis("left", "right")
-	player.direction.x = x_axis
+	#if player.is_on_floor():
+		#player.change_state( idle )
 	player.velocity.x = player.direction.x * player.move_speed
 	
 	return next_state
 	
 func physics_process ( _delta: float ) -> PlayerState:
+	if player.is_on_floor():
+		return idle
 	return next_state
