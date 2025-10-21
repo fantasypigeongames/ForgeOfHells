@@ -1,6 +1,12 @@
 class_name Player 
 extends CharacterBody2D
 
+#region ///onready variables
+@onready var player_sprite: Sprite2D = $Sprite2D
+@onready var collision_stand: CollisionShape2D = $CollisionStand
+@onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
+#endregion
 
 const DEBUG_JUMP_INDICATOR = preload("res://player/debug_jump_indicator.tscn")
 #region ///export variables
@@ -18,6 +24,7 @@ var previous_state : PlayerState :
 #region ///standard variables
 var direction : Vector2 = Vector2.ZERO
 var gravity : float = 980
+var gravity_multiplier : float = 1.0
 #endregion
 
 func _ready() -> void:
@@ -36,8 +43,10 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	#runs every tick at a locked frame rate per project
-	velocity.y += gravity * _delta
+	velocity.y += gravity * _delta * gravity_multiplier
 	change_state( current_state.physics_process( _delta ) )
+	
+	#print(velocity)
 	pass
 	
 func initialize_states() -> void :

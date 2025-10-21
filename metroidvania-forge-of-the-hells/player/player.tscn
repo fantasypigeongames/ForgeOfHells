@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddto2sv8dasbg"]
+[gd_scene load_steps=10 format=3 uid="uid://ddto2sv8dasbg"]
 
 [ext_resource type="Script" uid="uid://b7x4n8qtfps25" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bwiu301q23cw8" path="res://player/states/idle.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://d2s1b0xsysxiq" path="res://player/states/run.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://cm1oufdskk2lx" path="res://player/states/jump.gd" id="4_qjkh3"]
 [ext_resource type="Script" uid="uid://blt1w5m1sclp0" path="res://player/states/fall.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://cuwdy2i02yeoh" path="res://player/states/crouch.gd" id="6_g6k8r"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
 size = Vector2(18, 48)
@@ -12,16 +13,26 @@ size = Vector2(18, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oul6g"]
 size = Vector2(18, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
+size = Vector2(18, 29)
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_oul6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_kqu6x")
 offset = Vector2(0, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionStand" type="CollisionShape2D" parent="."]
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_oul6g")
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
 
 [node name="States" type="Node" parent="."]
 
@@ -41,6 +52,10 @@ script = ExtResource("4_qjkh3")
 unique_name_in_owner = true
 script = ExtResource("5_g6k8r")
 
+[node name="Crouch" type="Node" parent="States"]
+unique_name_in_owner = true
+script = ExtResource("6_g6k8r")
+
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0
 offset_top = -62.0
@@ -49,3 +64,7 @@ offset_bottom = -48.0
 theme_override_font_sizes/font_size = 10
 text = "state"
 horizontal_alignment = 1
+
+[node name="OneWayPlatformRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 4)
+collision_mask = 2

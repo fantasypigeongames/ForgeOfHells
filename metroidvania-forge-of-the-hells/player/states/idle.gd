@@ -25,6 +25,8 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 func process ( _delta: float ) -> PlayerState:
 	if player.direction.x != 0:
 		return run
+	elif player.direction.y > 0.5:
+		return crouch
 	#homework ep 03. ep 04 move this to handle_input
 	#if Input.is_action_just_pressed("jump"):
 		#return jump
