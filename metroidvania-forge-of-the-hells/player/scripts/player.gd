@@ -3,14 +3,16 @@ extends CharacterBody2D
 
 #region ///onready variables
 @onready var player_sprite: Sprite2D = $Sprite2D
+@onready var player_animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
-@onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
+@onready var one_way_platform_shape_cast: ShapeCast2D = $OneWayPlatformShapeCast2D
 #endregion
 
 const DEBUG_JUMP_INDICATOR = preload("res://player/debug_jump_indicator.tscn")
 #region ///export variables
 @export var move_speed : float = 150
+@export var max_fall_velocity : float = 600
 #endregion
 
 #region ///state machine variables
@@ -44,6 +46,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	#runs every tick at a locked frame rate per project
 	velocity.y += gravity * _delta * gravity_multiplier
+	velocity.y = clampf( velocity.y, -1000, max_fall_velocity) #-1000 max jump velocity could be used for jump boards
 	change_state( current_state.physics_process( _delta ) )
 	
 	#print(velocity)
@@ -93,6 +96,11 @@ func update_direction() -> void:
 	var y_axis = Input.get_axis("up", "down")
 	direction = Vector2(x_axis,y_axis)
 	
+	if prev_direction.x != direction.x:
+		if direction.x < 0: 
+			player_sprite.flip_h = true
+		elif direction.x > 0: 
+			player_sprite.flip_h = false
 	pass
 	
 

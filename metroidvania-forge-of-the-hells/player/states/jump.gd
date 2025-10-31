@@ -12,6 +12,8 @@ func enter() -> void:
 	#play jump animation
 	player.add_debug_indicator( Color.LAWN_GREEN )
 	player.velocity.y = -jump_velocity
+	player.player_animation_player.play("jump")
+	player.player_animation_player.pause()
 	pass
 	
 func exit() -> void:
@@ -23,11 +25,12 @@ func exit() -> void:
 func handle_input( event : InputEvent ) -> PlayerState:
 	if event.is_action_released("jump"):
 		print("JUMP RELEASED")
-		player.velocity.y *= 0.5
+		player.velocity.y *= 0 #0.5
 		return fall
 	return next_state
 	
 func process ( _delta: float ) -> PlayerState:	
+	set_jump_frame()
 	return next_state
 	
 func physics_process ( _delta: float ) -> PlayerState:
@@ -38,6 +41,11 @@ func physics_process ( _delta: float ) -> PlayerState:
 	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
 	
+func set_jump_frame() -> void:
+	var frame : float = remap(player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5)
+	player.player_animation_player.seek(frame, true)
+	
+	pass
 	
 	
 	##ep 03 homework. update enter to the above code to be velocity based, not timer based jump
