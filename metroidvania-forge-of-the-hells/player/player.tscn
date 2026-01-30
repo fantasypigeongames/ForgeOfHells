@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://ddto2sv8dasbg"]
 
 [ext_resource type="Script" uid="uid://b7x4n8qtfps25" path="res://player/scripts/player.gd" id="1_oul6g"]
-[ext_resource type="Texture2D" uid="uid://cgdxav0kbxggo" path="res://player/sprites/forge_of_hells_player_animation-Sheet.png" id="2_boad6"]
+[ext_resource type="Texture2D" uid="uid://32g7wq4s8xeu" path="res://player/sprites/hero.png" id="2_boad6"]
 [ext_resource type="Script" uid="uid://bwiu301q23cw8" path="res://player/states/idle.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://d2s1b0xsysxiq" path="res://player/states/run.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://cm1oufdskk2lx" path="res://player/states/jump.gd" id="4_qjkh3"]
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [10, 11, 12, 13]
+"values": [20, 21, 22, 23]
 }
 
 [sub_resource type="Animation" id="Animation_boad6"]
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [14, 15, 16, 17, 18]
+"values": [24, 25, 26, 27, 28]
 }
 
 [sub_resource type="Animation" id="Animation_hg6s5"]
@@ -93,7 +93,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7, 8, 3, 2, 9]
+"values": [12, 13, 14, 15, 16, 17, 18, 19]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hg6s5"]
@@ -109,6 +109,7 @@ _data = {
 size = Vector2(16, 3)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 0
 collision_mask = 3
 floor_constant_speed = true

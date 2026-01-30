@@ -13,7 +13,7 @@ config_version=5
 config/name="Metroidvania Forge of the Hells"
 config/description="from Michael Games Metroidvania tutorial series
 https://www.youtube.com/watch?v=TINyb6wXbWo"
-run/main_scene="uid://bkb527006b4yb"
+run/main_scene="uid://c4js3kkc415pb"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://ccmein20s7113"
 
