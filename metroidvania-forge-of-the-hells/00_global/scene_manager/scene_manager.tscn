@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbnu6mi5mkop6"]
+
+[ext_resource type="Script" uid="uid://nc5oie3qml2y" path="res://00_global/scene_manager/scene_manager.gd" id="1_4wb0k"]
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_4wb0k")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Test"

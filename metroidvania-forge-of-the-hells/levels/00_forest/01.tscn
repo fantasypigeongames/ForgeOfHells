@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=4 uid="uid://c4js3kkc415pb"]
+[gd_scene load_steps=5 format=4 uid="uid://c4js3kkc415pb"]
 
 [ext_resource type="TileSet" uid="uid://by25gqkrvqnky" path="res://levels/tilesets/forest.tres" id="1_pu3y4"]
 [ext_resource type="PackedScene" uid="uid://ddto2sv8dasbg" path="res://player/player.tscn" id="2_1pu88"]
 [ext_resource type="Script" uid="uid://cmfloco3s46a3" path="res://general/scripts/level_bounds.gd" id="3_1pu88"]
+[ext_resource type="PackedScene" uid="uid://dfiy7e0hotk0" path="res://general/level_transition/level_transition.tscn" id="4_vhcel"]
 
 [node name="01" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_1pu88")]
-position = Vector2(94, 55)
+position = Vector2(944, 264)
 
 [node name="FloatingOneWay" type="TileMapLayer" parent="."]
 position = Vector2(0, 72)
@@ -25,3 +26,9 @@ script = ExtResource("3_1pu88")
 width = 1152
 height = 398
 metadata/_custom_type_script = "uid://cmfloco3s46a3"
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_vhcel")]
+position = Vector2(1152, 288)
+size = 20
+location = 1
+target_level = "uid://c263ol3hogco8"
