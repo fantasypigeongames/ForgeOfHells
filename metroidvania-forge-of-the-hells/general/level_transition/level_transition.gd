@@ -15,7 +15,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 		apply_area_settings()
 
 @export_file( "*.tscn" ) var target_level : String = ""
-@export var target_area_name : String = "level_transition"
+@export var target_area_name : String = "LevelTransition"
 
 @onready var area_2d: Area2D = $Area2D
 
@@ -30,8 +30,8 @@ func _ready() -> void:
 func _on_player_entered( _n : Node2D ) -> void:
 	#transition to attached level
 	print("Player entered level transition: " + target_level )
-	print(target_area_name)
-	SceneManager.transition_scene( target_level, target_area_name, get_offset(_n) , "LEFT" )
+	print(location)
+	SceneManager.transition_scene( target_level, target_area_name, get_offset(_n) , get_transition_direction() )
 	pass 
 
 func _on_new_scene_ready( target_name : String, offset : Vector2 ) -> void:
@@ -42,7 +42,11 @@ func _on_new_scene_ready( target_name : String, offset : Vector2 ) -> void:
 	pass
 	
 func on_load_scene_finished() -> void:
+	area_2d.monitoring = false
 	area_2d.body_entered.connect( _on_player_entered )
+	await get_tree().physics_frame
+	await get_tree().physics_frame #THIS IS SUPPOSED TO FIX THE DOUBLE OVERLAP OF SCENES. IT DOES NOT RESOLVE IN 4.4 CURRENT STATE. 
+	area_2d.monitoring = true
 	pass
 
 func apply_area_settings() -> void :
@@ -76,9 +80,20 @@ func get_offset( player : Node2D ) -> Vector2 :
 			offset.x = 12
 	else:		
 		offset.x = player_pos.x - self.global_position.x
-		if location == SIDE.TOP:			
-			offset.y = 2
+		if location == SIDE.TOP:
+			offset.y = 48
 		else:
-			offset.x = -48
-			
+			offset.y = -2
+	print("offset: " + str(offset))
 	return offset
+
+func get_transition_direction() -> String:
+	match location: 
+		SIDE.LEFT:
+			return "left"
+		SIDE.RIGHT:
+			return "right"
+		SIDE.TOP:
+			return "up"
+		_:
+			return "down"

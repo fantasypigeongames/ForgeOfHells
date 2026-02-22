@@ -22,4 +22,3 @@ metadata/_custom_type_script = "uid://cmfloco3s46a3"
 position = Vector2(0, 336)
 size = 20
 target_level = "uid://b18wdt1qbs40"
-target_area_name = "LevelTransition"
