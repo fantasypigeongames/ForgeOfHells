@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("res://player/debug_jump_indicator.tscn")
 #region ///export variables
-@export var move_speed : float = 150
+@export var move_speed : float = 200 #originally 150, changed to 200 for convenience
 @export var max_fall_velocity : float = 600
 #endregion
 
