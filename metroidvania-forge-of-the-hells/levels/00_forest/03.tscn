@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=4 uid="uid://d21gsj1lpmlqm"]
+[gd_scene load_steps=9 format=4 uid="uid://d21gsj1lpmlqm"]
 
 [ext_resource type="TileSet" uid="uid://by25gqkrvqnky" path="res://levels/tilesets/forest.tres" id="2_r7adf"]
 [ext_resource type="Script" uid="uid://cmfloco3s46a3" path="res://general/scripts/level_bounds.gd" id="3_7vwju"]
 [ext_resource type="PackedScene" uid="uid://dfiy7e0hotk0" path="res://general/level_transition/level_transition.tscn" id="3_vv2jw"]
 [ext_resource type="PackedScene" uid="uid://ddto2sv8dasbg" path="res://player/player.tscn" id="4_r7adf"]
+[ext_resource type="PackedScene" uid="uid://dys3ktw1nkbp1" path="res://levels/props/animated_plant.tscn" id="5_nqq0o"]
+[ext_resource type="PackedScene" uid="uid://dmnht4f2bx6nm" path="res://levels/props/animated_torch.tscn" id="6_c06eb"]
+[ext_resource type="Texture2D" uid="uid://cjtr813cum1vu" path="res://levels/tilesets/sprites/light_stream.jpg" id="7_c06eb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1pjxa"]
+blend_mode = 1
 
 [node name="03" type="Node2D"]
 
@@ -31,4 +37,78 @@ location = 2
 target_level = "uid://b18wdt1qbs40"
 
 [node name="Player" parent="." instance=ExtResource("4_r7adf")]
-position = Vector2(944, 400)
+position = Vector2(327, 280)
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="AnimatedPlant" parent="Props" instance=ExtResource("5_nqq0o")]
+position = Vector2(260, 378)
+
+[node name="AnimatedPlant2" parent="Props" instance=ExtResource("5_nqq0o")]
+position = Vector2(680, 409)
+speed_scale = 0.8
+
+[node name="AnimatedPlant3" parent="Props" instance=ExtResource("5_nqq0o")]
+position = Vector2(735, 412)
+flip_h = true
+
+[node name="AnimatedTorch" parent="Props" instance=ExtResource("6_c06eb")]
+position = Vector2(828, 412)
+frame_progress = 0.237332
+
+[node name="AnimatedTorch2" parent="Props" instance=ExtResource("6_c06eb")]
+position = Vector2(708, 410)
+frame_progress = 0.237332
+
+[node name="AnimatedPlant4" parent="Props" instance=ExtResource("5_nqq0o")]
+position = Vector2(281, 381)
+frame = 2
+frame_progress = 0.378819
+speed_scale = 1.2
+flip_h = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.422746, 0.589006, 0.595041, 1)
+blend_mode = 2
+
+[node name="Parallax2DLight" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2DLight"]
+modulate = Color(0.480814, 0.961629, 0.83029, 0.356863)
+z_index = 5
+material = SubResource("CanvasItemMaterial_1pjxa")
+position = Vector2(558, 198)
+rotation = -0.72833
+scale = Vector2(0.274321, 1.37659)
+texture = ExtResource("7_c06eb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2DLight"]
+modulate = Color(0.480814, 0.961629, 0.83029, 0.356863)
+z_index = 5
+material = SubResource("CanvasItemMaterial_1pjxa")
+position = Vector2(133, 169)
+rotation = -0.72833
+scale = Vector2(0.44168, 1.45587)
+texture = ExtResource("7_c06eb")
+
+[node name="Parallax2DLight2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2DLight2"]
+modulate = Color(0.480814, 0.961629, 0.83029, 0.356863)
+z_index = 5
+material = SubResource("CanvasItemMaterial_1pjxa")
+position = Vector2(770, 199)
+rotation = -0.667976
+scale = Vector2(0.211152, 1.30857)
+texture = ExtResource("7_c06eb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2DLight2"]
+modulate = Color(0.480814, 0.961629, 0.83029, 0.356863)
+z_index = 5
+material = SubResource("CanvasItemMaterial_1pjxa")
+position = Vector2(378, 211)
+rotation = -0.686682
+scale = Vector2(0.153277, 1.24326)
+texture = ExtResource("7_c06eb")

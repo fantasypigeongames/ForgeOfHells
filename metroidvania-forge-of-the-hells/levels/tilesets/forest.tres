@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://by25gqkrvqnky"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://by25gqkrvqnky"]
 
 [ext_resource type="Texture2D" uid="uid://b6x6agg7ehfpk" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="1_2642b"]
 
@@ -8,18 +8,41 @@ tile_data = PackedInt32Array(0, 1507328, 9, 65536, 1507328, 10, 131072, 1507328,
 [sub_resource type="TileMapPattern" id="TileMapPattern_b7enr"]
 tile_data = PackedInt32Array(0, 1638400, 6, 65536, 1638400, 7, 1, 1703936, 6, 65537, 1703936, 7, 131073, 1703936, 8, 196609, 1703936, 9, 524289, 1703936, 14, 589825, 1703936, 15, 2, 1769472, 6, 65538, 1769472, 7, 131074, 1769472, 8, 196610, 1769472, 9, 262146, 1769472, 10, 327682, 1769472, 11, 393218, 1769472, 12, 458754, 1769472, 13, 524290, 1769472, 14, 589826, 1769472, 15, 3, 1835008, 6, 65539, 1835008, 7, 393219, 1835008, 12, 524291, 1835008, 14, 589827, 1835008, 15, 4, 1900544, 6)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2642b"]
+polygon = PackedVector2Array(-14, -10, 16, -10, 16, 16, -14, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b7enr"]
+polygon = PackedVector2Array(-16, -10, 16, -10, 16, 16, -16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1fpdr"]
+polygon = PackedVector2Array(8, -12, 0, -16, -12, -10, -16, -2, -12, 16, 14, 16, 16, -4)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1fig5"]
+polygon = PackedVector2Array(2, -8, -10, 16, 10, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jm273"]
+polygon = PackedVector2Array(10, -16, -12, -16, -16, -2, -12, 16, 14, 16, 16, -4)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uthb3"]
+polygon = PackedVector2Array(14, -10, -16, -10, -16, 16, 14, 16)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7enr"]
 texture = ExtResource("1_2642b")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_2642b")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -10, 16, -10, 16, 16, -14, 16)
 1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_b7enr")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -10, -16, -10, -16, 16, 16, 16)
 2:0/0 = 0
+2:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_b7enr")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -10, -16, -10, -16, 16, 16, 16)
 3:0/0 = 0
+3:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_b7enr")
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -10, -16, -10, -16, 16, 16, 16)
 4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_uthb3")
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(14, -10, -16, -10, -16, 16, 14, 16)
 5:0/0 = 0
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 14, 16, 16, 0, 16)
@@ -979,11 +1002,15 @@ texture_region_size = Vector2i(32, 32)
 29:15/0 = 0
 30:15/0 = 0
 20:7/0 = 0
+20:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_1fpdr")
 21:7/0 = 0
+21:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_1fig5")
 21:8/0 = 0
+21:8/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_jm273")
 
 [resource]
 tile_size = Vector2i(32, 32)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 physics_layer_1/collision_layer = 2
