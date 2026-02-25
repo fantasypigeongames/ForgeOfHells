@@ -1,6 +1,10 @@
 class_name Player 
 extends CharacterBody2D
 
+#PLAYER BUGS 2/24/26
+#on jump, when holding z, does not cycle through jump animation as expected 
+#on jump, does not accurately respond to when jump key is released
+
 #region ///onready variables
 @onready var player_sprite: Sprite2D = $Sprite2D
 @onready var player_animation_player: AnimationPlayer = $AnimationPlayer

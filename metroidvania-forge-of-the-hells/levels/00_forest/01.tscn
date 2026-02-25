@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=4 uid="uid://c4js3kkc415pb"]
 
 [ext_resource type="TileSet" uid="uid://by25gqkrvqnky" path="res://levels/tilesets/forest.tres" id="1_pu3y4"]
-[ext_resource type="PackedScene" uid="uid://ddto2sv8dasbg" path="res://player/player.tscn" id="2_1pu88"]
 [ext_resource type="Script" uid="uid://cmfloco3s46a3" path="res://general/scripts/level_bounds.gd" id="3_1pu88"]
 [ext_resource type="PackedScene" uid="uid://dfiy7e0hotk0" path="res://general/level_transition/level_transition.tscn" id="4_vhcel"]
 [ext_resource type="PackedScene" uid="uid://dys3ktw1nkbp1" path="res://levels/props/animated_plant.tscn" id="5_qmxb0"]
 [ext_resource type="PackedScene" uid="uid://dmnht4f2bx6nm" path="res://levels/props/animated_torch.tscn" id="6_chwhs"]
 [ext_resource type="Texture2D" uid="uid://cjtr813cum1vu" path="res://levels/tilesets/sprites/light_stream.jpg" id="7_72pnk"]
 [ext_resource type="Material" uid="uid://bfxxgyk2oy8cb" path="res://materials_and_shaders/fog_fade_material.tres" id="8_vdj2u"]
+[ext_resource type="PackedScene" uid="uid://c2v0x8s5n6ri8" path="res://general/player_spawn/player_spawn.tscn" id="9_8sv46"]
 
 [sub_resource type="Gradient" id="Gradient_vhcel"]
 colors = PackedColorArray(0.670588, 0.862745, 0.811765, 0.470588, 0.321569, 0.482353, 0.552941, 0.0352941)
@@ -72,9 +72,6 @@ turbulence_enabled = true
 turbulence_influence_max = 0.19
 
 [node name="01" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("2_1pu88")]
-position = Vector2(770, 181)
 
 [node name="LevelBounds" type="Node2D" parent="."]
 z_index = 256
@@ -307,3 +304,6 @@ texture = SubResource("GradientTexture2D_08onm")
 lifetime = 5.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_tkg5w")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("9_8sv46")]
+position = Vector2(306, 86)

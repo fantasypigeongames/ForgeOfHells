@@ -2,6 +2,11 @@
 @icon("res://general/icons/level_transition.svg")
 class_name LevelTransition extends Node2D
 
+#LEVEL TRANSITION BUGS 2/24/26
+#WHEN going back to level 2 from level 3, jumps through to scene 1 instead of scene 2
+#when going back to level 3 from level 4, player position is not set correctly to the other side of the door
+#when going back from level 5 to level 4, player position is set out of player view and no player is visible to control
+
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
 @export_range (2, 16, 1, "or_greater" ) var size : int = 2 : 
@@ -22,6 +27,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	apply_area_settings()
 	SceneManager.new_scene_ready.connect( _on_new_scene_ready )
 	SceneManager.load_scene_finished.connect( on_load_scene_finished )
 	

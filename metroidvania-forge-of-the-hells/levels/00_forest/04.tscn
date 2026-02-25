@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://b18wdt1qbs40"]
+[gd_scene load_steps=5 format=4 uid="uid://b18wdt1qbs40"]
 
 [ext_resource type="TileSet" uid="uid://by25gqkrvqnky" path="res://levels/tilesets/forest.tres" id="1_pbotc"]
 [ext_resource type="Script" uid="uid://cmfloco3s46a3" path="res://general/scripts/level_bounds.gd" id="2_c3nrs"]
 [ext_resource type="PackedScene" uid="uid://dfiy7e0hotk0" path="res://general/level_transition/level_transition.tscn" id="3_c3nrs"]
 [ext_resource type="PackedScene" uid="uid://dmnht4f2bx6nm" path="res://levels/props/animated_torch.tscn" id="4_2hhtl"]
-[ext_resource type="PackedScene" uid="uid://ddto2sv8dasbg" path="res://player/player.tscn" id="5_1vjl2"]
 
 [node name="04" type="Node2D"]
 
@@ -57,6 +56,3 @@ frame_progress = 0.237332
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.203875, 0.309918, 0.231486, 1)
 blend_mode = 2
-
-[node name="Player" parent="." instance=ExtResource("5_1vjl2")]
-position = Vector2(770, 181)
