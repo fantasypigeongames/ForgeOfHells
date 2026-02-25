@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmnht4f2bx6nm"]
+[gd_scene load_steps=15 format=3 uid="uid://dmnht4f2bx6nm"]
 
 [ext_resource type="Texture2D" uid="uid://b6x6agg7ehfpk" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="1_l7cap"]
 [ext_resource type="Script" uid="uid://1stwgx0typuh" path="res://general/scripts/light_flicker.gd" id="2_dg56u"]
@@ -57,6 +57,34 @@ height = 256
 fill = 1
 fill_from = Vector2(0.512048, 0.493976)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dg56u"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_dg56u"]
+offsets = PackedFloat32Array(0, 0.137931, 0.327586, 0.517241, 0.706897, 0.931035)
+colors = PackedColorArray(0.980978, 0.981995, 0.54912, 1, 1, 0.91243, 0.223786, 1, 0.832644, 0.555404, 0.164431, 1, 0.622196, 0.143331, 0.174286, 1, 0.180933, 0.032161, 0.032161, 1, 0, 0, 0, 0.286275)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jk7ty"]
+gradient = SubResource("Gradient_dg56u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2sxnx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+inherit_velocity_ratio = -0.3
+direction = Vector3(0, -20, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 200.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_jk7ty")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+turbulence_initial_displacement_min = -20.0
+turbulence_initial_displacement_max = 20.0
+
 [node name="AnimatedTorch" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_73ntp")
 autoplay = "default"
@@ -68,3 +96,10 @@ position = Vector2(0, -32)
 energy = 0.5
 texture = SubResource("GradientTexture2D_dg56u")
 script = ExtResource("2_dg56u")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dg56u")
+position = Vector2(-2, -34)
+amount = 2
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2sxnx")
