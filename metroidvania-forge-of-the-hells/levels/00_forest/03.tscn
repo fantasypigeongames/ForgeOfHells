@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://d21gsj1lpmlqm"]
+[gd_scene load_steps=9 format=4 uid="uid://d21gsj1lpmlqm"]
 
 [ext_resource type="TileSet" uid="uid://by25gqkrvqnky" path="res://levels/tilesets/forest.tres" id="2_r7adf"]
 [ext_resource type="Script" uid="uid://cmfloco3s46a3" path="res://general/scripts/level_bounds.gd" id="3_7vwju"]
 [ext_resource type="PackedScene" uid="uid://dfiy7e0hotk0" path="res://general/level_transition/level_transition.tscn" id="3_vv2jw"]
 [ext_resource type="PackedScene" uid="uid://dys3ktw1nkbp1" path="res://levels/props/animated_plant.tscn" id="5_nqq0o"]
 [ext_resource type="PackedScene" uid="uid://dmnht4f2bx6nm" path="res://levels/props/animated_torch.tscn" id="6_c06eb"]
+[ext_resource type="PackedScene" uid="uid://c2v0x8s5n6ri8" path="res://general/player_spawn/player_spawn.tscn" id="7_1pjxa"]
 [ext_resource type="Texture2D" uid="uid://cjtr813cum1vu" path="res://levels/tilesets/sprites/light_stream.jpg" id="7_c06eb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1pjxa"]
@@ -108,3 +109,6 @@ position = Vector2(378, 211)
 rotation = -0.686682
 scale = Vector2(0.153277, 1.24326)
 texture = ExtResource("7_c06eb")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_1pjxa")]
+position = Vector2(474, 258)
