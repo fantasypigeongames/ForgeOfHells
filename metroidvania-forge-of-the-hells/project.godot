@@ -20,6 +20,7 @@ config/icon="uid://ccmein20s7113"
 [autoload]
 
 SceneManager="*res://00_global/scene_manager/scene_manager.tscn"
+SaveManager="*res://00_global/save_manager.gd"
 
 [display]
 

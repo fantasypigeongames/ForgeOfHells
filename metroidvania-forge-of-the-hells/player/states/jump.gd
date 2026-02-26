@@ -8,7 +8,7 @@ func init() -> void:
 	pass
 	
 func enter() -> void:
-	print("enter: ", name)
+	#print("enter: ", name)
 	#play jump animation
 	player.add_debug_indicator( Color.LAWN_GREEN )
 	player.velocity.y = -jump_velocity
@@ -17,14 +17,14 @@ func enter() -> void:
 	pass
 	
 func exit() -> void:
-	print("exit: ", name)
+	#print("exit: ", name)
 	player.add_debug_indicator( Color.YELLOW )
 	pass
 	
 #what happens when input is pressed/released
 func handle_input( event : InputEvent ) -> PlayerState:
 	if event.is_action_released("jump"):
-		print("JUMP RELEASED")
+		#print("JUMP RELEASED")
 		player.velocity.y *= 0 #0.5
 		return fall
 	return next_state

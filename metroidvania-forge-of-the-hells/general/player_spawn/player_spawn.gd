@@ -10,9 +10,10 @@ func _ready() -> void:
 	await get_tree().process_frame
 	
 	if get_tree().get_first_node_in_group( "Player" ):
-		print("Player found")
+		#print("Player found")
+		return
 		
-	print("NO PLAYER FOUND")
+	#print("NO PLAYER FOUND")
 	var player : Player = load( "uid://ddto2sv8dasbg" ).instantiate()
 	get_tree().root.add_child( player )
 	player.global_position = self.global_position

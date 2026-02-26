@@ -20,11 +20,11 @@ func init() -> void:
 	pass
 	
 func enter() -> void:
-	print("enter: ", name)
+	#print("enter: ", name)
 	pass
 	
 func exit() -> void:
-	print("exit: ", name)
+	#print("exit: ", name)
 	pass
 	
 #what happens when input is pressed/released

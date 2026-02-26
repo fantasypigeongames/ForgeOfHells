@@ -3,8 +3,10 @@ extends CanvasLayer
 signal load_scene_started
 signal new_scene_ready( target_name : String, offset : Vector2 )
 signal load_scene_finished
+signal scene_entered ( uid : String )
 @onready var fade: Control = $Fade
 
+var current_scene_uid : String 
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -24,19 +26,24 @@ func transition_scene( new_scene : String, target_area: String, player_offset : 
 	await fade_screen( fade_pos, Vector2.ZERO )
 		
 	get_tree().change_scene_to_file(new_scene)
-	
+	#current_scene_uid = ResourceUID.path_to_uid( new_scene )  #SHOULD USE THIS TO ALWAYS GUARANTEE UID BUT UNAVAILABLE UNTIL 4.5
+	current_scene_uid = new_scene
+	#print("new scene: " + new_scene)
+	scene_entered.emit( current_scene_uid )
 	#await get_tree().scene_changed
 	#THROWS ERROR IN GODOT 4.4, ONLY AVAILABLE 4.5+ CURRENT MACHINE DOES NOT SUPPORT 4.5+
 	await get_tree().process_frame
 	await get_tree().process_frame
 
-	print("target area: "+ target_area)
-	print("player offset: " + str(player_offset))
+	#print("target area: "+ target_area)
+	#print("player offset: " + str(player_offset))
 	new_scene_ready.emit( target_area, player_offset )
 	
+	await get_tree().process_frame
 	#fade new scene in 	
 	await fade_screen( Vector2.ZERO, -fade_pos )
 	
+	await get_tree().process_frame
 	get_tree().paused = false
 	fade.visible = true
 	load_scene_finished.emit()

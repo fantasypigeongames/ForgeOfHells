@@ -13,7 +13,7 @@ func init() -> void:
 	pass
 	
 func enter() -> void:
-	print("enter: ", name)
+	#print("enter: ", name)
 	player.player_animation_player.play("jump")
 	player.player_animation_player.pause()
 	player.gravity_multiplier = fall_gravity_multiplier
@@ -27,7 +27,7 @@ func enter() -> void:
 	pass
 	
 func exit() -> void:
-	print("exit: ", name)
+	#print("exit: ", name)
 	player.add_debug_indicator( Color.RED )
 	player.gravity_multiplier = 1.0
 	pass

@@ -7,12 +7,12 @@ func init() -> void:
 	pass
 	
 func enter() -> void:
-	print("enter: ", name)
+	#print("enter: ", name)
 	player.player_animation_player.play("run")
 	pass
 	
 func exit() -> void:
-	print("exit: ", name)
+	#print("exit: ", name)
 	pass
 	
 #what happens when input is pressed/released

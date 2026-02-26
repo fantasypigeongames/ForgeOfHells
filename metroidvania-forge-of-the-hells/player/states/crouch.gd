@@ -8,14 +8,14 @@ func init() -> void:
 	pass
 	
 func enter() -> void:
-	print("enter: ", name)
+	#print("enter: ", name)
 	player.collision_stand.disabled = true
 	player.collision_crouch.disabled = false	
 	player.player_animation_player.play("crouch")
 	pass
 	
 func exit() -> void:
-	print("exit: ", name)
+	#print("exit: ", name)
 	player.collision_stand.disabled = false
 	player.collision_crouch.disabled = true
 	pass
