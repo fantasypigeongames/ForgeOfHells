@@ -47,10 +47,13 @@ func _ready() -> void:
 		self.queue_free()
 	initialize_states()
 	self.call_deferred("reparent",  get_tree().root )
+	Messages.player_healed.connect( _on_player_healed )
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
-	change_state( current_state.handle_input( event))
+	if event.is_action_pressed("action"): 
+		Messages.player_interacted.emit( self )
+	change_state( current_state.handle_input( event ))
 
 func _process(_delta: float) -> void:
 	#runs every tick at the variable rate of the game run on a screen fps
@@ -127,4 +130,9 @@ func add_debug_indicator(color : Color = Color.RED) -> void:
 	d.modulate = color
 	await get_tree().create_timer(3.0).timeout
 	d.queue_free()
+	pass
+	
+func _on_player_healed ( amount : float ) -> void : 
+	hp += amount
+	print("Player healed for: " + str(amount) )
 	pass
