@@ -12,6 +12,9 @@ func _ready() -> void:
 	await get_tree().process_frame
 	load_scene_finished.emit()
 	fade.visible = false
+	var current_scene : String = get_tree().current_scene.scene_file_path
+	#current_scene_uid = ResourceUID.path_to_uid( current_scene )  #SHOULD USE THIS TO ALWAYS GUARANTEE UID BUT UNAVAILABLE UNTIL 4.5
+	print(current_scene)
 	pass
 
 func transition_scene( new_scene : String, target_area: String, player_offset : Vector2, dir : String ) -> void:

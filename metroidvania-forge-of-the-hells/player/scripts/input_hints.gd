@@ -52,7 +52,7 @@ func get_controller_type( device_id : int ) -> void:
 		controller_type = "playstation"
 	#elif "nintendo" in n or "switch" in n:
 	#	controller_type = "nintendo"
-	else: controller_type = "unknown"
+	else: controller_type = "unknown" #this currently maps to nothing, would break if undetected controller
 	set_process_input( false ) #this would break technically if user started with keyboard then switched to controller, would show previous hints and not auto switch because input is disabled
 	
 	pass

@@ -21,11 +21,11 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed: 
 		if event.keycode == KEY_1:
-			create_new_game_save()
+			create_new_game_save( current_slot )
 		if event.keycode == KEY_F5:
-			save_game()
+			save_game( current_slot )
 		if event.keycode == KEY_F7:
-			load_game()
+			load_game( current_slot )
 		if event.keycode == KEY_1:
 			current_slot = 0
 		if event.keycode == KEY_2:
@@ -34,7 +34,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			current_slot = 2
 	pass
 
-func create_new_game_save() -> void:
+func create_new_game_save( slot : int ) -> void:
+	current_slot = slot 
+	discovered_areas.clear()
+	persistent_data.clear()
 	print("Creating new game save!")
 	var new_game_scene : String = "uid://c4js3kkc415pb"
 	discovered_areas.append( new_game_scene )
@@ -52,11 +55,14 @@ func create_new_game_save() -> void:
 		"persistent_data": persistent_data,
 	}
 	#save game data
-	var save_file = FileAccess.open( get_file_name() , FileAccess.WRITE) #fileaccess user:// is dynamic per different os systems and their field save 
+	var save_file = FileAccess.open( get_file_name( current_slot ) , FileAccess.WRITE) #fileaccess user:// is dynamic per different os systems and their field save 
 	save_file.store_line( JSON.stringify( save_data ))
+	
+	save_file.close()
+	load_game( slot )
 	pass
 	
-func save_game() -> void:
+func save_game( slot : int ) -> void:
 	#print("Begin save game!")
 	var player : Player = get_tree().get_first_node_in_group( "Player" )
 	save_data = {
@@ -72,17 +78,17 @@ func save_game() -> void:
 		"discovered_areas": discovered_areas,
 		"persistent_data": persistent_data,
 	}
-	var save_file = FileAccess.open( get_file_name() , FileAccess.WRITE) #fileaccess user:// is dynamic per different os systems and their field save 
+	var save_file = FileAccess.open( get_file_name( current_slot ) , FileAccess.WRITE) #fileaccess user:// is dynamic per different os systems and their field save 
 	save_file.store_line( JSON.stringify( save_data ))
 	print(save_data)
 	pass
 
-func load_game() -> void:	
+func load_game( slot: int ) -> void:	
 	#print("Begin load game!")
-	if not FileAccess.file_exists( get_file_name() ):
+	if not FileAccess.file_exists( get_file_name( current_slot ) ):
 		return
-		
-	var save_file = FileAccess.open( get_file_name() , FileAccess.READ)
+	current_slot = slot 
+	var save_file = FileAccess.open( get_file_name( current_slot ) , FileAccess.READ)
 	save_data = JSON.parse_string( save_file.get_line() )
 	
 	persistent_data = save_data.get( "persistent_data", {} )
@@ -109,5 +115,8 @@ func setup_player() -> void:
 		save_data.get( "y", 0 ))
 	pass
 
-func get_file_name() -> String:
-	return "user://" + SLOTS[ current_slot ] + ".sav"
+func get_file_name( slot: int ) -> String:
+	return "user://" + SLOTS[ slot ] + ".sav"
+
+func save_file_exists ( slot : int ) -> bool:
+	return FileAccess.file_exists( get_file_name( slot ))

@@ -31,7 +31,7 @@ func _on_player_interacted( _player : Player ) -> void:
 	Messages.input_hint_changed.emit( "" )
 	animation_player.play( "game_saved" )
 	animation_player.seek( 0 )
-	SaveManager.save_game()
+	SaveManager.save_game( SaveManager.current_slot )
 	#heal player
 	#audio
 	pass
