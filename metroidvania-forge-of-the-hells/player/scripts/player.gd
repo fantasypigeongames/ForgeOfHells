@@ -70,8 +70,15 @@ func _unhandled_input( event: InputEvent ) -> void:
 			else:
 				hp += 2
 		
-	if event.is_action_pressed("action"): 
+		
+		
+	if event.is_action_pressed( "action" ): 
 		Messages.player_interacted.emit( self )
+	elif event.is_action_pressed( "pause" ):
+		get_tree().paused = true
+		var pause_menu : PauseMenu = load( "res://pause_menu/pause_menu.tscn" ).instantiate()
+		add_child( pause_menu )
+		
 	change_state( current_state.handle_input( event ))
 
 func _process(_delta: float) -> void:
