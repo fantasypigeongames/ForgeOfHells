@@ -1,9 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpju1tyyef1yg"]
+[gd_scene load_steps=9 format=3 uid="uid://cpju1tyyef1yg"]
 
 [ext_resource type="Script" uid="uid://umnjwrw1y2sc" path="res://pause_menu/scripts/pause_menu.gd" id="1_5hbt6"]
+[ext_resource type="PackedScene" uid="uid://5clrqhje65dl" path="res://pause_menu/map_node.tscn" id="2_rd7dy"]
 
 [sub_resource type="FontVariation" id="FontVariation_5hbt6"]
 spacing_glyph = 4
+
+[sub_resource type="Gradient" id="Gradient_rd7dy"]
+offsets = PackedFloat32Array(0, 0.600522, 0.997389)
+colors = PackedColorArray(1, 1, 1, 1, 0.403922, 0.639216, 0.776471, 1, 0.329412, 0.407843, 0.803922, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uwtdo"]
+gradient = SubResource("Gradient_rd7dy")
+width = 5
+height = 5
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_rd7dy"]
+resource_name = "default"
+length = 0.7
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.301961, 0.482353, 0.698039, 0.878431)]
+}
+
+[sub_resource type="Animation" id="Animation_uwtdo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b4s0c"]
+_data = {
+&"RESET": SubResource("Animation_uwtdo"),
+&"default": SubResource("Animation_rd7dy")
+}
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -84,6 +136,80 @@ offset_left = 155.0
 offset_top = 26.0
 offset_right = 479.0
 offset_bottom = 240.0
+
+[node name="MapNode" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.121046, 0.574675, 0.178267, 1)
+layout_mode = 1
+offset_left = -10.0
+offset_top = 69.0
+offset_right = -276.0
+offset_bottom = -125.0
+linked_scene = "uid://c4js3kkc415pb"
+entrances_right = Array[float]([5.6])
+
+[node name="MapNode2" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.649343, 0.307593, 0.649351, 1)
+layout_mode = 1
+offset_left = 60.0
+offset_top = 65.0
+offset_right = -206.0
+offset_bottom = -123.0
+linked_scene = "uid://c263ol3hogco8"
+entrances_left = Array[float]([15.4])
+entrances_right = Array[float]([2.0])
+
+[node name="MapNode3" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.121046, 0.574675, 0.178267, 1)
+layout_mode = 1
+offset_left = 128.0
+offset_top = 65.0
+offset_right = -142.0
+offset_bottom = -124.0
+linked_scene = "uid://d21gsj1lpmlqm"
+entrances_top = Array[float]([46.85])
+entrances_left = Array[float]([2.2])
+
+[node name="MapNode4" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.533943, 0.0422366, 0.0422366, 1)
+layout_mode = 1
+offset_left = 168.0
+offset_top = 95.0
+offset_right = -102.0
+offset_bottom = -99.0
+linked_scene = "uid://b18wdt1qbs40"
+entrances_bottom = Array[float]([5.6])
+entrances_right = Array[float]([14.2])
+
+[node name="MapNode5" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.533943, 0.0422366, 0.0422366, 1)
+layout_mode = 1
+offset_left = 229.0
+offset_top = 95.0
+offset_right = -41.0
+offset_bottom = -99.0
+linked_scene = "uid://cdgygqu3wahb5"
+entrances_left = Array[float]([13.8])
+
+[node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 69.0
+offset_top = -23.0
+offset_right = 109.0
+offset_bottom = 17.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/Map/PlayerIndicator"]
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 5.0
+texture = SubResource("GradientTexture2D_uwtdo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PauseScreen/Map/PlayerIndicator/TextureRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_b4s0c")
+}
+autoplay = "default"
 
 [node name="SystemMenuButton" type="Button" parent="Control/PauseScreen"]
 unique_name_in_owner = true
