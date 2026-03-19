@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://b18wdt1qbs40"]
+[gd_scene load_steps=8 format=4 uid="uid://b18wdt1qbs40"]
 
 [ext_resource type="TileSet" uid="uid://by25gqkrvqnky" path="res://levels/tilesets/forest.tres" id="1_pbotc"]
 [ext_resource type="Script" uid="uid://cmfloco3s46a3" path="res://general/scripts/level_bounds.gd" id="2_c3nrs"]
 [ext_resource type="PackedScene" uid="uid://dfiy7e0hotk0" path="res://general/level_transition/level_transition.tscn" id="3_c3nrs"]
 [ext_resource type="PackedScene" uid="uid://dmnht4f2bx6nm" path="res://levels/props/animated_torch.tscn" id="4_2hhtl"]
 [ext_resource type="PackedScene" uid="uid://c2v0x8s5n6ri8" path="res://general/player_spawn/player_spawn.tscn" id="5_2hhtl"]
+[ext_resource type="PackedScene" uid="uid://bxol1akogmydd" path="res://general/door_and_switch/door.tscn" id="6_1vjl2"]
+[ext_resource type="PackedScene" uid="uid://dkf0u5oxn4ko7" path="res://general/door_and_switch/switch.tscn" id="7_k841l"]
 
 [node name="04" type="Node2D"]
 
@@ -59,4 +61,11 @@ color = Color(0.203875, 0.309918, 0.231486, 1)
 blend_mode = 2
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_2hhtl")]
-position = Vector2(560, 160)
+position = Vector2(816, 216)
+
+[node name="Door" parent="." instance=ExtResource("6_1vjl2")]
+process_mode = 3
+position = Vector2(1064, 322)
+
+[node name="Switch" parent="Door" instance=ExtResource("7_k841l")]
+position = Vector2(-168, -2)

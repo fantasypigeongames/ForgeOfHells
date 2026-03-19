@@ -15,6 +15,8 @@ func _ready() -> void:
 	
 func _on_player_entered( _n : Node2D ) -> void: 
 	#print("Player entered Save Point")
+	
+	Messages.input_hint_changed.emit( "interact" )
 	Messages.player_interacted.connect( _on_player_interacted )
 	
 	pass
@@ -22,7 +24,7 @@ func _on_player_entered( _n : Node2D ) -> void:
 func _on_player_exited( _n : Node2D ) -> void: 
 	#print("Player exited Save Point")	
 	Messages.player_interacted.disconnect( _on_player_interacted )
-	Messages.input_hint_changed.emit( "interact" )
+	Messages.input_hint_changed.emit( "" )
 	pass
 
 func _on_player_interacted( _player : Player ) -> void: 

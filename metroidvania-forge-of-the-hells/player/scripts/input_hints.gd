@@ -58,6 +58,7 @@ func get_controller_type( device_id : int ) -> void:
 	pass
 
 func _on_hint_changed( hint: String ) -> void: 
+	#print("input hint: " + hint)
 	if hint == "":
 		visible = false 
 	else: 

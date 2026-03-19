@@ -18,6 +18,21 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="Animation" id="Animation_uwtdo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_rd7dy"]
 resource_name = "default"
 length = 0.7
@@ -34,21 +49,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.301961, 0.482353, 0.698039, 0.878431)]
-}
-
-[sub_resource type="Animation" id="Animation_uwtdo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4s0c"]
@@ -140,20 +140,20 @@ offset_bottom = 240.0
 [node name="MapNode" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.121046, 0.574675, 0.178267, 1)
 layout_mode = 1
-offset_left = -10.0
-offset_top = 69.0
-offset_right = -276.0
-offset_bottom = -125.0
+offset_left = 13.0
+offset_top = 58.5
+offset_right = -253.0
+offset_bottom = -135.5
 linked_scene = "uid://c4js3kkc415pb"
-entrances_right = Array[float]([5.6])
+entrances_right = Array[float]([11.4])
 
 [node name="MapNode2" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.649343, 0.307593, 0.649351, 1)
 layout_mode = 1
-offset_left = 60.0
-offset_top = 65.0
-offset_right = -206.0
-offset_bottom = -123.0
+offset_left = 83.0
+offset_top = 57.5
+offset_right = -183.0
+offset_bottom = -130.5
 linked_scene = "uid://c263ol3hogco8"
 entrances_left = Array[float]([15.4])
 entrances_right = Array[float]([2.0])
@@ -161,10 +161,10 @@ entrances_right = Array[float]([2.0])
 [node name="MapNode3" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.121046, 0.574675, 0.178267, 1)
 layout_mode = 1
-offset_left = 128.0
-offset_top = 65.0
-offset_right = -142.0
-offset_bottom = -124.0
+offset_left = 149.0
+offset_top = 57.0
+offset_right = -121.0
+offset_bottom = -132.0
 linked_scene = "uid://d21gsj1lpmlqm"
 entrances_top = Array[float]([46.85])
 entrances_left = Array[float]([2.2])
@@ -172,10 +172,10 @@ entrances_left = Array[float]([2.2])
 [node name="MapNode4" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.533943, 0.0422366, 0.0422366, 1)
 layout_mode = 1
-offset_left = 168.0
-offset_top = 95.0
-offset_right = -102.0
-offset_bottom = -99.0
+offset_left = 189.0
+offset_top = 84.5
+offset_right = -81.0
+offset_bottom = -109.5
 linked_scene = "uid://b18wdt1qbs40"
 entrances_bottom = Array[float]([5.6])
 entrances_right = Array[float]([14.2])
@@ -183,10 +183,10 @@ entrances_right = Array[float]([14.2])
 [node name="MapNode5" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.533943, 0.0422366, 0.0422366, 1)
 layout_mode = 1
-offset_left = 229.0
-offset_top = 95.0
-offset_right = -41.0
-offset_bottom = -99.0
+offset_left = 250.0
+offset_top = 84.5
+offset_right = -20.0
+offset_bottom = -109.5
 linked_scene = "uid://cdgygqu3wahb5"
 entrances_left = Array[float]([13.8])
 
